@@ -15,14 +15,6 @@ app.get('/', (req, res) => {
 
 app.post('/login', (req, res) => {
 
-    users.push(
-    {
-        id: Date.now().toString,
-        email: req.body.email,
-        password: req.body.password
-    }
-    )
-
     console.log(req.body.email);
     console.log(req.body.password);
 
