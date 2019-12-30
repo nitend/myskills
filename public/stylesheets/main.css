@@ -2,6 +2,8 @@
   background-image: url("/img/interview_preview.jpeg");
   background-repeat: no-repeat;
   background-position: center top;
+  height: 80%;
+  background-size: cover;
   text-align: center;
   padding-bottom: 80px; }
 
