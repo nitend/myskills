@@ -4,5 +4,13 @@ html(lang="de")
     meta(charset="UTF-8")
     title test
   body
-    p Das ist die Result seite und das ist eine neue
-    p #{document}
+    p Das ist die Result seite und das ist eine neue0
+    form(action="/login", method="post")
+    div.from-group
+      label(for="email") Email:
+      input#(type="email", name="email")
+    div.form-group
+      label(for="password") Password:
+      input#(type="password", name="password")
+
+    button.btn.btn-primary(type='submit') Interview starten
