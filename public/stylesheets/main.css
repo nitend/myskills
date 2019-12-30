@@ -8,6 +8,7 @@ body, html {
   background-position: center;
   height: 100%;
   background-size: cover;
+  align-content: center;
 }
 
 .header-title {
