@@ -2,14 +2,12 @@ const express = require("express");
 const http = require("http");
 const model = require("./model")
 
-const app = express();
-const users = [];
+const app = express()
+const users = []
 
+
+app.set('view engine', 'pug')
 app.use(express.urlencoded({extended: false}))
-app.set('view engine', 'pug');
-
-// const docs = model.getAll();
-// console.log(docs);
 
 app.get('/', (req, res) => { 
     res.render(__dirname + '/results/view/results');
@@ -20,7 +18,7 @@ app.post('/login', (req, res) => {
     users.push(
     {
         id: Date.now().toString,
-        email: rereq.body.email,
+        email: req.body.email,
         password: req.body.password
     }
     )
