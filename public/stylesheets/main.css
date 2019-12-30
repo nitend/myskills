@@ -2,6 +2,7 @@
   background-image: url("/img/interview_preview.jpeg");
   background-repeat: no-repeat;
   background-position: center top;
+  text-align: center;
   padding-bottom: 80px; }
 
 .header-title {
@@ -11,4 +12,5 @@
 
 input.login-forms {
   background: white;
+  align-self: center;
   border-color: #845ac7; }
