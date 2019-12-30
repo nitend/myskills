@@ -8,6 +8,7 @@ const users = []
 
 app.set('view engine', 'pug')
 app.use(express.urlencoded({extended: false}))
+app.use(express.static('img'))
 
 app.get('/', (req, res) => { 
     res.render(__dirname + '/results/view/results');
