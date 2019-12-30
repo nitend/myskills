@@ -2,15 +2,18 @@ doctype html
 html(lang="de")
   head
     meta(charset="UTF-8")
-    title test
+    title Startseite
+    link(rel="stylesheet", href="main.css")
   body
+  div.screen-top
+    div.header-title
+      p Teste deine Fähigkeiten im Gespräch
+    div.login-form
+      form(action="/login" method="POST")
+        label(for="email") Email:
+        input#email(type="email", name="email")
+        label(for="password") Password:
+        input#password(type="password", name="password")
+        button(type="submit") starten
+
     img(src="/img/interview_preview.jpeg", alt="interview")
-    p Das ist die Result seite und das ist eine neue
-    P und
-    p ein
-    form(action="/login" method="POST")
-      label(for="email") Email:
-      input#email(type="email", name="email")
-      label(for="password") Password:
-      input#password(type="password", name="password")
-      button(type="submit") starten
