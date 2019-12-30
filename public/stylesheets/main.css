@@ -1,5 +1,7 @@
 .screen-top {
-  background-image: url("/img/interview_preview");
+  background-image: url("/img/interview_preview.jpeg");
+  background-repeat: no-repeat;
+  background-position: center top;
   padding-bottom: 80px; }
 
 .header-title {
