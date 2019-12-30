@@ -1,13 +1,20 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require("express");
+const http = require("http");
+const model = require("./model")
 
-express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+const app = express();
+
+app.set('view engine', 'pug');
+
+// const docs = model.getAll();
+// console.log(docs);
+
+app.get('/', (req, res) => { 
+    res.render(__dirname + '/results/view/results');
+})
 
 
- 
+app.listen(8080, () => {
+    console.log('Server is listening on Port 8080')
+})
+
