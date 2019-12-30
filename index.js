@@ -5,6 +5,7 @@ const model = require("./model")
 const app = express();
 const users = [];
 
+app.use(express.urlencoded({extended: false}))
 app.set('view engine', 'pug');
 
 // const docs = model.getAll();
@@ -19,8 +20,8 @@ app.post('/login', (req, res) => {
     users.push(
     {
         id: Date.now().toString,
-        email: res.body.email,
-        password: password
+        email: rereq.body.email,
+        password: req.body.password
     }
     )
 

@@ -5,12 +5,11 @@ html(lang="de")
     title test
   body
     p Das ist die Result seite und das ist eine neue0
-    form(action="/login", method="post")
+    form(action="/login" method="POST")
     div.from-group
       label(for="email") Email:
       input#email(type="email", name="email")
     div.form-group
       label(for="password") Password:
       input#password(type="password", name="password")
-
-    button.btn.btn-primary(type='submit') Interview starten
+    input(type="submit" value='starten')
