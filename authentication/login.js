@@ -1,10 +1,12 @@
 const passport = require('passport')
 const expressSession = require('express-session');
 const LocalStrategy = require('passport-local');
+const database = require('./model')
+
 
 const testUser = {
     email: 'test@test.de',
-    username: 'test@test.de',
+    username: 'Tester',
     password: 'test'
 
 }
@@ -20,7 +22,10 @@ module.exports = app => {
     passport.use(
         new LocalStrategy( {usernameField: 'email', passwordField: 'password' },
             (username, password, done) => {
-                // database access
+                database.findUser(username, (err, User) => {
+                    console.log('user exists: ' + User)
+                    console.log(err)
+                })
                 done(null, testUser)
             })
     )
@@ -39,17 +44,5 @@ module.exports = app => {
     app.post(
         '/login', 
         passport.authenticate('local', {successRedirect: '/interview', failureRedirect: '/'}));
-    /*
-
-    app.post('/login', function(req, res, next) {
-        console.log(req.url);
-        passport.authenticate('local', function(err, user, info) {
-            console.log("authenticate");
-            console.log(err);
-            console.log(user);
-            console.log(info);
-        })(req, res, next);
-    });
-    */
 }
 

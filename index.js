@@ -1,6 +1,5 @@
 const express = require("express");
 const http = require("http");
-const model = require("./model")
 const path = require('path')
 const login = require('./authentication/login.js')
 const bodyParser = require('body-parser')
