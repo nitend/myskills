@@ -1,0 +1,13 @@
+
+div.login-frame
+  div.login-header
+    p Teste deine Fähigkeiten im Gespräch
+  div.login-form
+    form(action="/login" method="POST")
+      label(for="email") Email:
+      input#email(type="email", name="email")
+      br
+      label(for="password") Password:
+      input#password(type="password", name="password")
+      br
+      button.button(type="submit") starten

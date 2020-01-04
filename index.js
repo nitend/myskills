@@ -2,28 +2,27 @@ const express = require("express");
 const http = require("http");
 const model = require("./model")
 const path = require('path')
+const login = require('./authentication/login.js')
+const bodyParser = require('body-parser')
 
 const app = express();
 
 
-const users = []
-
-
 app.set('view engine', 'pug');
-app.use(express.urlencoded({extended: false}));
+
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+login(app)
 
 
 app.get('/', (req, res) => { 
-    res.render(__dirname + '/results/view/results');
+    res.render(__dirname + '/views/startpage');
 })
 
-app.post('/login', (req, res) => {
-
-    console.log(req.body.email);
-    console.log(req.body.password);
-
-    res.redirect('/')
+app.get('/interview', (req, res) => { 
+    res.render(__dirname + '/views/interviewpage', {username: req.user.username});
 })
 
 app.listen(8080, () => {
