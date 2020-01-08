@@ -3,6 +3,8 @@ body, html {
   margin: 0;
 } 
 
+
+
 .screen-top {
   background-image: url("/img/interview_preview.jpeg");
   background-repeat: no-repeat;
@@ -12,15 +14,23 @@ body, html {
   align-content: center;
 }
 
-.login-frame {
+.auth-frame {
   max-width: 300px;
   min-width: 100px;
+  align-content: center;
+  z-index: 2;
 }
 
-.login-header {
+.authchangemode {
+  text-align: center; 
+  color: black;
+}
+
+.auth-header {
   font-size: 40px;
-  color: rgb(255, 255, 255);
+  color: gray;
   border-color: rgb(68, 171, 255);
+  text-align: center;
 }
 
 
@@ -62,7 +72,7 @@ button {
   }
   
   input {
-    background-color: #eee;
+    background-color: white;
     border: none;
     padding: 12px 15px;
     margin: 8px 0;
@@ -70,7 +80,7 @@ button {
   }
   
   .container {
-    background-color: #fff;
+    background-color: white;
     border-radius: 10px;
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
         0 10px 10px rgba(0,0,0,0.22);

@@ -1,19 +1,18 @@
-doctype html
-html(lang="de")
-  head
-    meta(charset="UTF-8")
-    title Startseite
-    link(rel="stylesheet", href="/stylesheets/main.css")
-  body
-  div.screen-top
-    div.header-title
-      p Teste deine Fähigkeiten im Gespräch
-    div.login-form
-      form(action="/login" method="POST")
-        label(for="email") Email:
-        input#email(type="email", name="email")
+
+div.auth-frame
+  div.container
+    div.auth-header
+      p Registrieren
+
+    div.error-message
+    div.auth-form
+      form(action="/register" method="POST")
+        input#email(type="username", name="username", placeholder="Name")
         br
-        label(for="password") Password:
-        input#password(type="password", name="password")
+        input#email(type="email", name="email", placeholder="Email")
         br
+        input#password(type="password", name="password", placeholder="Passwort")
+        br   
         button.button(type="submit") starten
+        br
+    a.authchangemode(href="/login") Du hast schon ein Konto? Hier anmelden.

@@ -6,4 +6,10 @@ html(lang="de")
     link(rel="stylesheet", href="/stylesheets/main.css")
   body
  
-  include ../authentication/view/login
+  div.header
+    a(href="/logout") Logout
+  div.section
+    if(authmode == 'register') 
+      include ../authentication/view/register
+    else
+      include ../authentication/view/login

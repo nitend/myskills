@@ -12,8 +12,8 @@ function conncetDB(){
     }); 
     
     var UserShema = new mongoose.Schema({
-        email: String,
         username: String,
+        email: String,
         password: String
     })  
     UserModel = mongoose.model('UserModel', UserShema)
