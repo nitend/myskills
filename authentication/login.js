@@ -31,8 +31,8 @@ module.exports = app => {
                         return done(null, false, {message: 'Kein Nutzer mit dieser Email'})
                     }
                     try{
-                        const pwaccepted = await bcrypt.compare(password, user.password)
-                        if(pwaccepted){
+                        
+                        if(await bcrypt.compare(password, user.password)){
                             return done(null, user)
                         } else{
                             return done(null, false, {message: 'Passwort ist nicht korrekt'})
@@ -70,7 +70,7 @@ module.exports = app => {
                     console.log('Register: Email already existing')
                 } else{
                     try{
-                        const hashedpassword = bcrypt.hash(req.body.password, 10)
+                        const hashedpassword = await bcrypt.hash(req.body.password, 10)
                         var user = {         
                             username: req.body.username,
                             email: req.body.email,
