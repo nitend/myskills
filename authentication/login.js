@@ -66,8 +66,8 @@ module.exports = app => {
     app.post(
         '/register', function (req, res) {
             database.findUser(req.body.email, async (err, user) => {
-                if(user[0] == null) {
-                    console.log('Register: Email already existing')
+                if(user[0] != null) {
+                    res.redirect('/')
                 } else{
                     try{
                         const hashedpassword = await bcrypt.hash(req.body.password, 10)
