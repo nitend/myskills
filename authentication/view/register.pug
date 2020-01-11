@@ -3,8 +3,6 @@ div.auth-frame
   div.container
     div.auth-header
       p Registrieren
-
-    div.error-message
     div.auth-form
       form(action="/register" method="POST")
         input#email(type="username", name="username", placeholder="Name")
@@ -13,6 +11,7 @@ div.auth-frame
         br
         input#password(type="password", name="password", placeholder="Passwort")
         br   
-        button.button(type="submit") starten
-        br
-    a.authchangemode(href="/login") Du hast schon ein Konto? Hier anmelden.
+        button.button(type="submit") starten 
+
+    div.authchangemode
+      a(href="/login") Du hast schon ein Konto? Hier anmelden.

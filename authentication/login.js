@@ -5,46 +5,48 @@ const database = require('./model')
 const bcrypt = require('bcrypt')
 
 
-const testUser = {
-    email: 'test@test.de',
-    username: 'Tester',
-    password: 'test'
-
-}
-
 module.exports = app => {
 
     database.conncetDB();
 
     passport.serializeUser((user, done) => {
-        done(null, testUser.email)
+        done(null, user.id)
     })
     passport.deserializeUser((id, done) => {
-        done(null, testUser);
+        database.findUserById(id, done)
     });
 
      passport.use(
-        new LocalStrategy( {usernameField: 'email', passwordField: 'password' },
+        new LocalStrategy( {usernameField: 'email'},
             (email, password, done) => {
                 database.findUser(email, async (err, user) => {
-                    if(user == null){
-                        return done(null, false, {message: 'Kein Nutzer mit dieser Email'})
-                    }
-                    try{
+                    // Error
+                    if(err != null){
+                        console.log(err)
+                        return done(err)
                         
+                    }    
+                    // No User
+                    if(!Object.keys(user).length){
+                        return done(null, false)
+                        //
+                    }
+                    // Check password
+                    try{   
+                        console.log('user ' + user)
+                        console.log('password ' + password + ' hash ' + user['email'])
                         if(await bcrypt.compare(password, user.password)){
                             return done(null, user)
                         } else{
-                            return done(null, false, {message: 'Passwort ist nicht korrekt'})
+                            console.log('password wrong')
+                            return done(null, false)
+                            // 
                         }
                     } catch(e) {
                         done(e)
                     }
-
-                    console.log('user exists: ' + User)
-                    console.log(err)
                 })
-                done(null, testUser)
+                
             })
     )
 
@@ -61,12 +63,12 @@ module.exports = app => {
   
     app.post(
         '/login', 
-        passport.authenticate('local', {successRedirect: '/interview', failureRedirect: '/', failureFlash: true}));
+        passport.authenticate('local', {successRedirect: '/interview', failureRedirect: '/fail', failureFlash: true}));
 
     app.post(
         '/register', function (req, res) {
             database.findUser(req.body.email, async (err, user) => {
-                if(user[0] != null) {
+                if(user != null) {
                     res.redirect('/')
                 } else{
                     try{

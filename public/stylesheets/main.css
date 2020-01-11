@@ -3,8 +3,6 @@ body, html {
   margin: 0;
 } 
 
-
-
 .screen-top {
   background-image: url("/img/interview_preview.jpeg");
   background-repeat: no-repeat;
@@ -15,6 +13,7 @@ body, html {
 }
 
 .auth-frame {
+  margin: auto;
   max-width: 300px;
   min-width: 100px;
   align-content: center;
@@ -22,6 +21,9 @@ body, html {
 }
 
 .authchangemode {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
   text-align: center; 
   color: black;
 }
@@ -33,6 +35,15 @@ body, html {
   text-align: center;
 }
 
+.header {
+  width: 90%;
+  margin: auto
+}
+
+.header-right-menue{
+  margin-right: 0px;
+  margin-left: auto;
+}
 
 button {
   border-radius: 20px;
@@ -80,12 +91,14 @@ button {
   }
   
   .container {
+    /*
     background-color: white;
     border-radius: 10px;
       box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
         0 10px 10px rgba(0,0,0,0.22);
     position: relative;
     overflow: hidden;
+    */
     width: 768px;
     max-width: 100%;
     min-height: 480px;
