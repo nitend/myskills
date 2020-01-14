@@ -3,6 +3,10 @@ div.auth-frame
   div.container
     div.auth-header
       p.auth-header Login
+    div.flash-message
+      - if (messages.error)
+        .messages.error
+          span= messages.error
     div.auth-form
       form(action="/login" method="POST")
         input#email(type="email", name="email", placeholder="Email")

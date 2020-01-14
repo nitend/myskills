@@ -3,6 +3,11 @@ div.auth-frame
   div.container
     div.auth-header
       p Registrieren
+
+    div.flash-message
+      - if (messages.error)
+        .message.error
+          span= messages.error
     div.auth-form
       form(action="/register" method="POST")
         input#email(type="username", name="username", placeholder="Name")

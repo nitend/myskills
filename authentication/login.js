@@ -28,7 +28,7 @@ module.exports = app => {
                     }    
                     // No User
                     if(!Object.keys(user).length){
-                        return done(null, false)
+                        return done(null, false, {message: 'Email-Adresse oder Passwort falsch'})
                         //
                     }
                     // Check password
@@ -39,7 +39,7 @@ module.exports = app => {
                             return done(null, user)
                         } else{
                             console.log('password wrong')
-                            return done(null, false)
+                            return done(null, false, {message: 'Email-Adresse oder Passwort falsch'})
                             // 
                         }
                     } catch(e) {
@@ -63,13 +63,14 @@ module.exports = app => {
   
     app.post(
         '/login', 
-        passport.authenticate('local', {successRedirect: '/interview', failureRedirect: '/fail', failureFlash: true}));
+        passport.authenticate('local', {successRedirect: '/interview', failureRedirect: '/', failureFlash: true}));
 
     app.post(
         '/register', function (req, res) {
             database.findUser(req.body.email, async (err, user) => {
                 if(user != null) {
-                    res.redirect('/')
+                    req.flash('error', 'Es gibt bereits ein Nutzer mit dieser Email-Adresse')
+                    res.redirect('/register')                
                 } else{
                     try{
                         const hashedpassword = await bcrypt.hash(req.body.password, 10)
@@ -81,6 +82,7 @@ module.exports = app => {
                         database.saveUser(user);
                         res.redirect('/login')
                     }catch{
+                        req.flash('error', 'System-Fehler: Der Nutzer konnte nicht gespeichert werden.')
                         res.redirect('/register')
                     }
                 }                
