@@ -2,10 +2,11 @@ const express = require("express");
 const http = require("http");
 const path = require('path')
 var flash = require('express-flash')
-const login = require('./authentication/login.js')
+const login = require('./authentication/controller/login.js')
 const bodyParser = require('body-parser')
+const interviewer = require('./interview/controller/dialogflow')
 
-const app = express();
+const app = express(); 
 
 app.set('view engine', 'pug'); 
 app.use(flash())
@@ -33,6 +34,11 @@ app.get('/register', (req, res) => {
 
 app.get('/interview', (req, res) => { 
     res.render(__dirname + '/views/interviewpage', {username: req.user.username});
+})
+
+app.post('/answer', (req, res) =>{
+    console.log('Antwort erhalten')
+    interviewer.runSample()
 })
 
 app.listen(8080, () => {

@@ -1,15 +1,21 @@
 doctype html
-html(lang="de")
+html(lang='de')
   head
     meta(charset="UTF-8")
     title Startseite
     link(rel="stylesheet", href="/stylesheets/main.css")
-  body
-  
-  div.screen-top
-    div.header
-      div.header-right-menue
-        a(href="/logout") Logout
-    h1 Hallo #{username}
+  body 
+    div.screen-top
+      div.header
+        div.header-right-menue
+          button.button(href="/logout") Logout
+      div.section
+        h1 Hallo #{username}
+        form(action="/answer" method="POST")
+          textarea(name="answer", rows="6" cols='60')
+          br
+          button.button(type="submit") senden
+
+      
 
 

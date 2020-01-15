@@ -1,7 +1,7 @@
 const passport = require('passport')
 const expressSession = require('express-session');
 const LocalStrategy = require('passport-local');
-const database = require('./model')
+const database = require('../model/model')
 const bcrypt = require('bcrypt')
 
 

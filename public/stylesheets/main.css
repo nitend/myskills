@@ -1,17 +1,36 @@
 body, html {
-  height: 100%;
-  margin: 0;
+  margin: 0px;
+  padding: 0px;
 } 
 
 .screen-top {
   background-image: url("/img/interview_preview.jpeg");
   background-repeat: no-repeat;
   background-position: center;
-  height: 100%;
+  height: 90%;
   background-size: cover;
-  align-content: center;
 }
 
+/* HEADER */
+
+.header {
+  width: 90%;
+  margin: auto;
+  padding: 8px;
+}
+
+.header-right-menue{
+  float: right; 
+  margin-right: 0px;
+}
+
+.section {
+  width: 90%;
+  margin: auto;
+  padding: 8px;
+}
+
+ /* AUTHENTICATION */
 .auth-frame {
   margin: auto;
   max-width: 300px;
@@ -41,14 +60,10 @@ body, html {
   text-align: center;
 }
 
-.header {
-  width: 90%;
-  margin: auto
-}
+/* Interview */
 
-.header-right-menue{
-  margin-right: 0px;
-  margin-left: auto;
+#answer { 
+  width: 80%;
 }
 
 button {
@@ -78,7 +93,6 @@ button {
   }
   
   form {
-    background-color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -86,6 +100,12 @@ button {
     padding: 0 50px;
     height: 100%;
     text-align: center;
+  }
+
+  textarea{
+    width: 80%;
+    
+
   }
   
   input {
