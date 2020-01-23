@@ -42,6 +42,6 @@ async function runSample(textinput, sessionkey, done) {
     }
   }
 
-  module.exports = {
+  module.exports = { 
     runSample
   }

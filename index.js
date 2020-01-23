@@ -24,6 +24,7 @@ app.get('/login', (req, res) => {
 })
 
 app.get('/logout', (req, res) => {
+    console.log('logged out')
     req.logOut
     res.redirect('/');
 })
