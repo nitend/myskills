@@ -37,8 +37,9 @@ app.get('/interview', (req, res) => {
 })
 
 app.post('/answer', (req, res) =>{
-    console.log('Antwort erhalten')
-    interviewer.runSample()
+    const inputtext = req.body.answer
+    interviewer.runSample(inputtext, req.sessionID, null)
+    res.redirect('/interview')
 })
 
 app.listen(8080, () => {

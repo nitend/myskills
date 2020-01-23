@@ -1,25 +1,28 @@
 const dialogflow = require('dialogflow')
 const uuid = require('uuid')
 
+const projectId = 'mypersonalskills-bbosuc'
 /**
  * Send a query to the dialogflow agent, and return the query result.
  * @param {string} projectId The project to be used
  */
-async function runSample(projectId = 'mypersonalskills-bbosuc') {
+async function runSample(textinput, sessionkey, done) {
     // A unique identifier for the given session
-    const sessionId = uuid.v4();
+    const sessionId = sessionkey;
   
+    console.log(textinput)
+
     // Create a new session
     const sessionClient = new dialogflow.SessionsClient();
     const sessionPath = sessionClient.sessionPath(projectId, sessionId);
   
     // The text query request.
     const request = {
-      session: sessionPath,
+      session: sessionPath, 
       queryInput: {
         text: {
           // The query to send to the dialogflow agent
-          text: 'hello',
+          text: textinput,
           // The language used by the client (en-US)
           languageCode: 'en-US',
         },
