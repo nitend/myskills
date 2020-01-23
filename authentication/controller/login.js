@@ -33,8 +33,6 @@ module.exports = app => {
                     }
                     // Check password
                     try{   
-                        console.log('user ' + user)
-                        console.log('password ' + password + ' hash ' + user['email'])
                         if(await bcrypt.compare(password, user.password)){
                             return done(null, user)
                         } else{

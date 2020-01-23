@@ -13,7 +13,7 @@ async function runSample(textinput, sessionkey, done) {
     console.log(textinput)
 
     // Create a new session
-    const sessionClient = new dialogflow.SessionsClient();
+    const sessionClient = new dialogflow.SessionsClient({keyFilename: 'credentials.json'});
     const sessionPath = sessionClient.sessionPath(projectId, sessionId);
   
     // The text query request.
@@ -40,6 +40,7 @@ async function runSample(textinput, sessionkey, done) {
     } else {
       console.log(`  No intent matched.`);
     }
+    done(result.fulfillmentText, null, sessionId)
   }
 
   module.exports = { 
